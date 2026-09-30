@@ -71,6 +71,10 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    // Pin the static preset. Cloudflare Builds sets WORKERS_CI, which would
+    // otherwise auto-select the cloudflare-module server preset and make
+    // Wrangler look for a server entry that `nuxt generate` never produces.
+    preset: 'static',
     prerender: {
       crawlLinks: true,
       // Non-default themes live under a prefix; seeding their root lets the
