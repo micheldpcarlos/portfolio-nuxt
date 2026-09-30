@@ -1,0 +1,42 @@
+hero:
+  name: Michel Carlos
+  role: Software Engineer
+  tagline: Frontend specialist who ships. Vue by preference, browser extensions by habit, and always learning something new.
+  avatar: /images/me.jpg
+
+featuredLimit: 3
+latestPostsLimit: 3
+
+skills:
+  - name: Vue
+    icon: simple-icons:vuedotjs
+    since: 2020
+    note: My preferred framework. Composition API, Nuxt, and published composables.
+  - name: TypeScript
+    icon: simple-icons:typescript
+    since: 2019
+    note: Strict mode on. Types are documentation that the compiler checks.
+  - name: React
+    icon: simple-icons:react
+    since: 2019
+    note: Comfortable with hooks, Next, and the ecosystem around it.
+  - name: Angular
+    icon: simple-icons:angular
+    since: 2017
+    note: Two-plus years on large, opinionated enterprise apps.
+  - name: Tailwind CSS
+    icon: simple-icons:tailwindcss
+    since: 2023
+    note: Design tokens as CSS variables, utilities on top.
+  - name: Browser extensions
+    icon: lucide:puzzle
+    since: 2024
+    note: Manifest V3, WXT, Chrome Web Store publishing.
+  - name: Testing
+    icon: simple-icons:cypress
+    since: 2021
+    note: Cypress and Playwright for end-to-end, Vitest for units.
+  - name: HTML & CSS
+    icon: simple-icons:css
+    since: 2009
+    note: Semantic markup, accessibility, and layouts that survive real content.

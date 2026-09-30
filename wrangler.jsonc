@@ -1,0 +1,14 @@
+// Cloudflare Workers with static assets. The site is fully static (`nuxt generate`),
+// so there is no Worker script: Cloudflare serves `.output/public` directly.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "portfolio",
+  "compatibility_date": "2026-09-29",
+  "assets": {
+    "directory": "./.output/public",
+    "not_found_handling": "404-page",
+    "html_handling": "drop-trailing-slash"
+  },
+  "preview_urls": true,
+  "workers_dev": true
+}

@@ -1,0 +1,60 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Dark mode is driven by the `.dark` class set by @nuxtjs/color-mode. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Design tokens. Every theme reads these variables; a theme redefines them
+ * (or ignores them entirely) under its own root. The editorial theme's palette
+ * is the default.
+ */
+:root {
+  --bg: oklch(99% 0.005 300);
+  --bg-elevated: oklch(100% 0 0);
+  --fg: oklch(20% 0.02 300);
+  --fg-muted: oklch(48% 0.02 300);
+  --line: oklch(90% 0.01 300);
+  --brand: oklch(50% 0.19 310);
+  --brand-strong: oklch(40% 0.19 310);
+  --brand-soft: oklch(95% 0.04 310);
+  --brand-contrast: oklch(100% 0 0);
+}
+
+.dark {
+  --bg: oklch(16% 0.015 300);
+  --bg-elevated: oklch(21% 0.02 300);
+  --fg: oklch(95% 0.01 300);
+  --fg-muted: oklch(70% 0.02 300);
+  --line: oklch(30% 0.02 300);
+  --brand: oklch(75% 0.15 310);
+  --brand-strong: oklch(85% 0.12 310);
+  --brand-soft: oklch(28% 0.06 310);
+  --brand-contrast: oklch(16% 0.015 300);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-contrast: var(--brand-contrast);
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+  }
+}
