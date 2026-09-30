@@ -13,7 +13,7 @@ export function useTheme() {
   const definition = computed(() => themes[id.value])
   const prefix = computed(() => (id.value === DEFAULT_THEME ? '' : `/${id.value}`))
   /** Prefixes a content path with the active theme so links stay inside the theme. */
-  const link = (path: string) => `${prefix.value}${path}`
+  const link = (path: string) => (path === '/' ? prefix.value || '/' : `${prefix.value}${path}`)
   return { id, definition, prefix, link }
 }
 

@@ -1,0 +1,130 @@
+/*
+ * Lobby theme. Overrides the shared design tokens on its own root so every
+ * Tailwind utility (bg-bg, text-fg, ...) reads this palette inside the theme,
+ * and adds the few effects utilities can't express.
+ */
+.lobby {
+  --bg: oklch(18% 0.09 285);
+  --bg-elevated: oklch(24% 0.10 285);
+  --fg: oklch(98% 0.01 285);
+  --fg-muted: oklch(80% 0.05 285);
+  --line: oklch(45% 0.12 285);
+  --brand: oklch(85% 0.19 95);
+  --brand-strong: oklch(92% 0.17 95);
+  --brand-soft: oklch(32% 0.14 290);
+  --brand-contrast: oklch(20% 0.06 285);
+
+  --lobby-cyan: oklch(80% 0.15 220);
+  --lobby-pink: oklch(70% 0.25 340);
+  --lobby-purple: oklch(55% 0.24 300);
+
+  --rarity-common: #9da3ad;
+  --rarity-uncommon: #5fbf3a;
+  --rarity-rare: #3fa9f5;
+  --rarity-epic: #b04fe6;
+  --rarity-legendary: #f0a030;
+
+  color-scheme: dark;
+}
+
+.lobby-display {
+  font-family: var(--font-display);
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 0.95;
+  text-shadow: 0 3px 0 rgb(0 0 0 / 0.35);
+}
+
+.lobby-panel {
+  background: linear-gradient(160deg, rgb(255 255 255 / 0.10), rgb(255 255 255 / 0.04));
+  border: 1px solid rgb(255 255 255 / 0.14);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 60px rgb(0 0 0 / 0.35);
+}
+
+.lobby-slant {
+  transform: skewX(-8deg);
+}
+.lobby-slant > * {
+  transform: skewX(8deg);
+}
+
+.lobby-cta {
+  background: var(--brand);
+  color: var(--brand-contrast);
+  box-shadow: 0 6px 0 oklch(60% 0.15 95), 0 12px 24px rgb(0 0 0 / 0.35);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.lobby-cta:hover {
+  transform: skewX(-8deg) translateY(-2px);
+  box-shadow: 0 8px 0 oklch(60% 0.15 95), 0 16px 28px rgb(0 0 0 / 0.4);
+}
+.lobby-cta:active {
+  transform: skewX(-8deg) translateY(3px);
+  box-shadow: 0 3px 0 oklch(60% 0.15 95);
+}
+
+.lobby-card {
+  --rarity: var(--rarity-common);
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.06), transparent 40%),
+    linear-gradient(160deg, color-mix(in oklab, var(--rarity) 55%, black) 0%, color-mix(in oklab, var(--rarity) 20%, black) 100%);
+  border: 2px solid color-mix(in oklab, var(--rarity) 70%, white 10%);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.3), 0 10px 30px rgb(0 0 0 / 0.4);
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+.lobby-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.3), 0 0 0 3px color-mix(in oklab, var(--rarity) 60%, transparent), 0 18px 40px rgb(0 0 0 / 0.5);
+}
+.lobby-card[data-rarity="uncommon"] { --rarity: var(--rarity-uncommon); }
+.lobby-card[data-rarity="rare"] { --rarity: var(--rarity-rare); }
+.lobby-card[data-rarity="epic"] { --rarity: var(--rarity-epic); }
+.lobby-card[data-rarity="legendary"] { --rarity: var(--rarity-legendary); }
+
+.lobby-tab {
+  position: relative;
+  transition: color 120ms ease;
+}
+.lobby-tab::after {
+  content: "";
+  position: absolute;
+  inset: auto 0.5rem -0.35rem;
+  height: 3px;
+  background: var(--brand);
+  transform: scaleX(0);
+  transition: transform 160ms ease;
+}
+.lobby-tab.router-link-active::after,
+.lobby-tab:hover::after {
+  transform: scaleX(1);
+}
+
+.lobby-prose {
+  --tw-prose-body: var(--fg);
+  --tw-prose-headings: var(--fg);
+  --tw-prose-links: var(--brand);
+  --tw-prose-bold: var(--fg);
+  --tw-prose-quotes: var(--fg-muted);
+  --tw-prose-quote-borders: var(--brand);
+  --tw-prose-code: var(--lobby-cyan);
+  --tw-prose-pre-bg: rgb(0 0 0 / 0.45);
+  --tw-prose-pre-code: var(--fg);
+  --tw-prose-bullets: var(--brand);
+  --tw-prose-counters: var(--brand);
+  --tw-prose-hr: var(--line);
+}
+.lobby-prose h2, .lobby-prose h3 {
+  font-family: var(--font-display);
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lobby-card, .lobby-cta, .lobby-tab::after {
+    transition: none;
+  }
+}

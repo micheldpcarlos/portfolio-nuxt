@@ -30,6 +30,11 @@ const year = new Date().getFullYear()
               {{ item.label }}
             </NuxtLink>
           </li>
+          <li>
+            <ThemeSwitcher v-slot="{ label }" class="rounded px-2 py-1.5 text-sm text-fg-muted hover:text-fg">
+              <span class="inline-flex items-center gap-1"><Icon name="lucide:gamepad-2" class="size-4" />{{ label }}</span>
+            </ThemeSwitcher>
+          </li>
           <li><ColorModeToggle /></li>
         </ul>
       </nav>

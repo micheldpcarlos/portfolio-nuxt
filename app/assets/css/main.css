@@ -45,6 +45,7 @@
   --color-brand-contrast: var(--brand-contrast);
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Luckiest Guy", Impact, "Arial Black", sans-serif;
 }
 
 @layer base {

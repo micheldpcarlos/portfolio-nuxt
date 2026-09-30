@@ -5,7 +5,8 @@ import type { ThemeId } from '#shared/themes'
 export { DEFAULT_THEME, isTheme, themePrefixes } from '#shared/themes'
 
 // Components are async so each theme is its own chunk; a visitor on the
-// default theme never downloads another theme's code (or, later, Three.js).
+// default theme never downloads another theme's code (the lobby theme pulls
+// in Three.js, which the editorial theme never sees).
 const editorial: ThemeDefinition = {
   id: 'editorial',
   label: 'Editorial',
@@ -21,4 +22,19 @@ const editorial: ThemeDefinition = {
   },
 }
 
-export const themes: Record<ThemeId, ThemeDefinition> = { editorial }
+const lobby: ThemeDefinition = {
+  id: 'lobby',
+  label: 'Lobby',
+  shell: defineAsyncComponent(() => import('./lobby/Shell.vue')),
+  views: {
+    Home: defineAsyncComponent(() => import('./lobby/views/Home.vue')),
+    About: defineAsyncComponent(() => import('./lobby/views/About.vue')),
+    PostList: defineAsyncComponent(() => import('./lobby/views/PostList.vue')),
+    Post: defineAsyncComponent(() => import('./lobby/views/Post.vue')),
+    ProjectList: defineAsyncComponent(() => import('./lobby/views/ProjectList.vue')),
+    Project: defineAsyncComponent(() => import('./lobby/views/Project.vue')),
+    NotFound: defineAsyncComponent(() => import('./lobby/views/NotFound.vue')),
+  },
+}
+
+export const themes: Record<ThemeId, ThemeDefinition> = { editorial, lobby }
