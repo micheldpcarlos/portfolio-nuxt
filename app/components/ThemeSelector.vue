@@ -2,7 +2,7 @@
 // A themeable theme selector: <details> so it works before hydration, tokens
 // for colours so it fits whichever theme it sits in. Themes pass their own
 // classes for the trigger; the menu is styled with shared tokens only.
-defineProps<{ triggerClass?: string }>()
+defineProps<{ triggerClass?: string, placement?: 'down' | 'up' }>()
 
 const { options, current, remember } = useThemeOptions()
 const details = ref<HTMLDetailsElement>()
@@ -31,7 +31,7 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocumentClick))
       <Icon name="lucide:chevron-down" class="size-3.5 opacity-70" aria-hidden="true" />
     </summary>
 
-    <div class="absolute right-0 z-30 mt-2 w-72 overflow-hidden rounded-lg border border-line bg-bg-elevated text-fg shadow-xl">
+    <div class="absolute right-0 z-30 w-72 overflow-hidden rounded-lg border border-line bg-bg-elevated text-fg shadow-xl" :class="placement === 'up' ? 'bottom-full mb-2' : 'mt-2'">
       <p class="border-b border-line px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-fg-muted">Theme</p>
       <ul role="list">
         <li v-for="option in options" :key="option.id">

@@ -1,6 +1,6 @@
 // Theme identifiers, shared with nuxt.config so themed routes can be generated
 // without importing any Vue code there.
-export const THEME_IDS = ['editorial', 'lobby'] as const
+export const THEME_IDS = ['editorial', 'lobby', 'win98'] as const
 
 export type ThemeId = (typeof THEME_IDS)[number]
 

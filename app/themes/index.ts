@@ -41,4 +41,21 @@ const lobby: ThemeDefinition = {
   },
 }
 
-export const themes: Record<ThemeId, ThemeDefinition> = { editorial, lobby }
+const win98: ThemeDefinition = {
+  id: 'win98',
+  label: 'Windows 98',
+  tagline: 'Teal desktop, beveled windows, a taskbar.',
+  icon: 'lucide:monitor',
+  shell: defineAsyncComponent(() => import('./win98/Shell.vue')),
+  views: {
+    Home: defineAsyncComponent(() => import('./win98/views/Home.vue')),
+    About: defineAsyncComponent(() => import('./win98/views/About.vue')),
+    PostList: defineAsyncComponent(() => import('./win98/views/PostList.vue')),
+    Post: defineAsyncComponent(() => import('./win98/views/Post.vue')),
+    ProjectList: defineAsyncComponent(() => import('./win98/views/ProjectList.vue')),
+    Project: defineAsyncComponent(() => import('./win98/views/Project.vue')),
+    NotFound: defineAsyncComponent(() => import('./win98/views/NotFound.vue')),
+  },
+}
+
+export const themes: Record<ThemeId, ThemeDefinition> = { editorial, lobby, win98 }

@@ -1,0 +1,182 @@
+/*
+ * Windows 98 theme. Token overrides on the root, plus the bevel vocabulary
+ * the classic UI is made of. Colours follow the default 98 scheme.
+ */
+.win98 {
+  --bg: #008080;
+  --bg-elevated: #c0c0c0;
+  --fg: #000000;
+  --fg-muted: #404040;
+  --line: #808080;
+  --brand: #000080;
+  --brand-strong: #1084d0;
+  --brand-soft: #dfdfdf;
+  --brand-contrast: #ffffff;
+
+  --w98-face: #c0c0c0;
+  --w98-light: #dfdfdf;
+  --w98-lighter: #ffffff;
+  --w98-shadow: #808080;
+  --w98-dark: #000000;
+  --w98-title-from: #000080;
+  --w98-title-to: #1084d0;
+
+  color-scheme: light;
+  font-family: "MS Sans Serif", Tahoma, "Segoe UI", Arial, sans-serif;
+  font-size: 13px;
+}
+
+/* Raised bevel: buttons, window frames, taskbar. */
+.w98-raised {
+  background: var(--w98-face);
+  box-shadow:
+    inset -1px -1px var(--w98-dark),
+    inset 1px 1px var(--w98-lighter),
+    inset -2px -2px var(--w98-shadow),
+    inset 2px 2px var(--w98-light);
+}
+
+/* Sunken bevel: inputs, list areas, status cells. */
+.w98-sunken {
+  background: #ffffff;
+  box-shadow:
+    inset -1px -1px var(--w98-lighter),
+    inset 1px 1px var(--w98-shadow),
+    inset -2px -2px var(--w98-light),
+    inset 2px 2px var(--w98-dark);
+}
+
+.w98-groove {
+  box-shadow:
+    inset -1px -1px var(--w98-lighter),
+    inset 1px 1px var(--w98-shadow);
+}
+
+.w98-btn {
+  background: var(--w98-face);
+  color: var(--fg);
+  min-width: 75px;
+  padding: 4px 12px;
+  line-height: 1.2;
+  box-shadow:
+    inset -1px -1px var(--w98-dark),
+    inset 1px 1px var(--w98-lighter),
+    inset -2px -2px var(--w98-shadow),
+    inset 2px 2px var(--w98-light);
+}
+.w98-btn:active,
+.w98-btn[aria-pressed="true"],
+.w98-btn.is-active {
+  box-shadow:
+    inset -1px -1px var(--w98-lighter),
+    inset 1px 1px var(--w98-dark),
+    inset -2px -2px var(--w98-light),
+    inset 2px 2px var(--w98-shadow);
+  padding: 5px 11px 3px 13px;
+}
+.w98-btn:focus-visible {
+  outline: 1px dotted var(--w98-dark);
+  outline-offset: -5px;
+}
+.w98-btn.is-default {
+  box-shadow:
+    0 0 0 1px var(--w98-dark),
+    inset -1px -1px var(--w98-dark),
+    inset 1px 1px var(--w98-lighter),
+    inset -2px -2px var(--w98-shadow),
+    inset 2px 2px var(--w98-light);
+}
+
+.w98-titlebar {
+  background: linear-gradient(90deg, var(--w98-title-from), var(--w98-title-to));
+  color: #ffffff;
+}
+.w98-titlebar-btn {
+  width: 16px;
+  height: 14px;
+  min-width: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.w98-menu-item:hover,
+.w98-menu-item:focus-visible,
+.w98-selected {
+  background: var(--brand);
+  color: var(--brand-contrast);
+  outline: none;
+}
+
+.w98-desktop-icon {
+  width: 76px;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 1px 1px 0 #000;
+}
+.w98-desktop-icon:focus-visible span,
+.w98-desktop-icon.router-link-active span {
+  background: var(--brand);
+  outline: 1px dotted #ffffff;
+  outline-offset: -1px;
+}
+
+.w98-prose {
+  --tw-prose-body: var(--fg);
+  --tw-prose-headings: var(--fg);
+  --tw-prose-links: var(--brand);
+  --tw-prose-bold: var(--fg);
+  --tw-prose-quotes: var(--fg-muted);
+  --tw-prose-quote-borders: var(--w98-shadow);
+  --tw-prose-code: var(--fg);
+  --tw-prose-pre-bg: #ffffff;
+  --tw-prose-pre-code: var(--fg);
+  --tw-prose-bullets: var(--fg);
+  --tw-prose-counters: var(--fg);
+  --tw-prose-hr: var(--w98-shadow);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.w98-prose h1, .w98-prose h2, .w98-prose h3 {
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.w98-prose pre {
+  box-shadow:
+    inset -1px -1px var(--w98-lighter),
+    inset 1px 1px var(--w98-shadow),
+    inset -2px -2px var(--w98-light),
+    inset 2px 2px var(--w98-dark);
+  border-radius: 0;
+}
+.w98-prose code {
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* Explorer-style details table. */
+.w98-table th {
+  text-align: left;
+  font-weight: 400;
+  padding: 2px 6px;
+  background: var(--w98-face);
+  box-shadow:
+    inset -1px -1px var(--w98-dark),
+    inset 1px 1px var(--w98-lighter),
+    inset -2px -2px var(--w98-shadow),
+    inset 2px 2px var(--w98-light);
+}
+.w98-table td {
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+.w98-table tr:hover td {
+  background: var(--brand);
+  color: var(--brand-contrast);
+}
+.w98-table tr:hover a {
+  color: var(--brand-contrast);
+}

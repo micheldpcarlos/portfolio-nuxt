@@ -43,9 +43,10 @@ A missing or malformed field fails the build.
 
 The theme is then served under `/theme/<id>/...` (a `pages:extend` hook in `nuxt.config.ts` clones every page route under that prefix), prerendered by the crawler, excluded from the sitemap, and canonicalised to the root URL. The default theme has no prefix. `<ThemeSelector>` lists every theme with a link to the current page under it, and remembers the choice in localStorage. A tiny inline head script sends a visitor with a remembered non-default theme to the themed URL before first paint; URLs under a theme prefix always win.
 
-Two themes exist today:
+Three themes exist today:
 
 - **editorial** (default): plain DOM, light and dark mode.
+- **win98** (`/theme/win98`): Windows 98 desktop. Every view is a beveled window (`components/Window.vue`), the shell is the desktop plus taskbar with Start menu, and the bevel vocabulary lives in `win98.css`.
 - **lobby** (`/theme/lobby`): game-lobby look with a TresJS scene in the shell (`app/themes/lobby/scene/`). The camera swings per section (`useSceneSection.ts`), rarity colours derive from project status (`components/rarity.ts`), and the scene holds still under `prefers-reduced-motion`. Three.js only ships in this theme's chunk.
 
 ## Deploying
