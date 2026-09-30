@@ -24,7 +24,7 @@ Three layers, kept strictly apart:
 | Data    | `app/data/`, `app/composables/useSiteData.ts` | View models, the only place that queries Nuxt Content     |
 | Themes  | `app/themes/`                  | Pure views: a shell plus one component per view, see `types.ts`      |
 
-Pages under `app/pages/[[theme]]/` are thin: load a model through a composable, hand it to `<ThemeView>`.
+Pages under `app/pages/` are thin: load a model through a composable, hand it to `<ThemeView>`.
 
 ### Writing content
 
@@ -41,12 +41,12 @@ A missing or malformed field fails the build.
 2. Create `app/themes/<id>/` with a `Shell.vue` and every view listed in `ViewProps` (`app/themes/types.ts`).
 3. Register it in `app/themes/index.ts` with async imports so it stays in its own chunk.
 
-The theme is then served under `/<id>/...`, prerendered by the crawler, excluded from the sitemap, and canonicalised to the root URL. The default theme has no prefix. `<ThemeSelector>` lists every theme with a link to the current page under it, and remembers the choice in localStorage. A tiny inline head script sends a visitor with a remembered non-default theme to the themed URL before first paint; URLs under a theme prefix always win.
+The theme is then served under `/theme/<id>/...` (a `pages:extend` hook in `nuxt.config.ts` clones every page route under that prefix), prerendered by the crawler, excluded from the sitemap, and canonicalised to the root URL. The default theme has no prefix. `<ThemeSelector>` lists every theme with a link to the current page under it, and remembers the choice in localStorage. A tiny inline head script sends a visitor with a remembered non-default theme to the themed URL before first paint; URLs under a theme prefix always win.
 
 Two themes exist today:
 
 - **editorial** (default): plain DOM, light and dark mode.
-- **lobby** (`/lobby`): game-lobby look with a TresJS scene in the shell (`app/themes/lobby/scene/`). The camera swings per section (`useSceneSection.ts`), rarity colours derive from project status (`components/rarity.ts`), and the scene holds still under `prefers-reduced-motion`. Three.js only ships in this theme's chunk.
+- **lobby** (`/theme/lobby`): game-lobby look with a TresJS scene in the shell (`app/themes/lobby/scene/`). The camera swings per section (`useSceneSection.ts`), rarity colours derive from project status (`components/rarity.ts`), and the scene holds still under `prefers-reduced-motion`. Three.js only ships in this theme's chunk.
 
 ## Deploying
 

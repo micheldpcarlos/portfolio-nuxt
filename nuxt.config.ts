@@ -1,5 +1,5 @@
 import tailwindcss from '@tailwindcss/vite'
-import { themePrefixes, themeRedirectScript } from './shared/themes'
+import { themePrefixes, themeRedirectScript, themeRoutePattern } from './shared/themes'
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -66,6 +66,19 @@ export default defineNuxtConfig({
   icon: {
     serverBundle: { collections: ['lucide', 'simple-icons'] },
     clientBundle: { scan: true },
+  },
+
+  hooks: {
+    // Every page also exists under /theme/<id>/... for each non-default theme.
+    // The param is constrained to registered ids, so anything else is a 404.
+    'pages:extend'(pages) {
+      const themed = pages.map(page => ({
+        ...page,
+        name: page.name ? `theme-${page.name}` : undefined,
+        path: `${themeRoutePattern}${page.path === '/' ? '' : page.path}`,
+      }))
+      pages.push(...themed)
+    },
   },
 
   ogImage: { enabled: false },

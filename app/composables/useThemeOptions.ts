@@ -1,4 +1,4 @@
-import { DEFAULT_THEME, THEME_STORAGE_KEY, themes } from '~/themes'
+import { THEME_STORAGE_KEY, themePrefix, themes } from '~/themes'
 import type { ThemeId } from '~/themes/types'
 
 export interface ThemeOption {
@@ -25,7 +25,7 @@ export function useThemeOptions() {
       label: theme.label,
       tagline: theme.tagline,
       icon: theme.icon,
-      to: theme.id === DEFAULT_THEME ? path : `/${theme.id}${path === '/' ? '' : path}`,
+      to: `${themePrefix(theme.id)}${path === '/' ? '' : path}` || '/',
       active: theme.id === id.value,
     })),
   )

@@ -2,7 +2,7 @@ import { defineAsyncComponent } from 'vue'
 import type { ThemeDefinition } from './types'
 import type { ThemeId } from '#shared/themes'
 
-export { DEFAULT_THEME, THEME_STORAGE_KEY, isTheme, themePrefixes } from '#shared/themes'
+export { DEFAULT_THEME, THEME_STORAGE_KEY, isTheme, themePrefix, themePrefixes } from '#shared/themes'
 
 // Components are async so each theme is its own chunk; a visitor on the
 // default theme never downloads another theme's code (the lobby theme pulls
