@@ -19,10 +19,13 @@ export interface ViewProps {
 
 export type ViewName = keyof ViewProps
 
-
 export interface ThemeDefinition {
   id: ThemeId
   label: string
+  /** One line shown in the theme selector. */
+  tagline: string
+  /** Iconify name shown in the theme selector. */
+  icon: string
   shell: Component
   views: { [K in ViewName]: Component }
 }

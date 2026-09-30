@@ -1,5 +1,5 @@
 import tailwindcss from '@tailwindcss/vite'
-import { themePrefixes } from './shared/themes'
+import { themePrefixes, themeRedirectScript } from './shared/themes'
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -35,7 +35,11 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: { lang: 'en' },
       link: [{ rel: 'icon', href: '/favicon.ico' }],
-      script: isProd ? [umamiScript] : [],
+      script: [
+        // Sends visitors with a remembered theme to it before first paint.
+        { innerHTML: themeRedirectScript, tagPosition: 'head' },
+        ...(isProd ? [umamiScript] : []),
+      ],
     },
   },
 

@@ -2,7 +2,7 @@ import { defineAsyncComponent } from 'vue'
 import type { ThemeDefinition } from './types'
 import type { ThemeId } from '#shared/themes'
 
-export { DEFAULT_THEME, isTheme, themePrefixes } from '#shared/themes'
+export { DEFAULT_THEME, THEME_STORAGE_KEY, isTheme, themePrefixes } from '#shared/themes'
 
 // Components are async so each theme is its own chunk; a visitor on the
 // default theme never downloads another theme's code (the lobby theme pulls
@@ -10,6 +10,8 @@ export { DEFAULT_THEME, isTheme, themePrefixes } from '#shared/themes'
 const editorial: ThemeDefinition = {
   id: 'editorial',
   label: 'Editorial',
+  tagline: 'Clean and readable, light or dark.',
+  icon: 'lucide:newspaper',
   shell: defineAsyncComponent(() => import('./editorial/Shell.vue')),
   views: {
     Home: defineAsyncComponent(() => import('./editorial/views/Home.vue')),
@@ -25,6 +27,8 @@ const editorial: ThemeDefinition = {
 const lobby: ThemeDefinition = {
   id: 'lobby',
   label: 'Lobby',
+  tagline: 'Game lobby with a floating 3D island.',
+  icon: 'lucide:gamepad-2',
   shell: defineAsyncComponent(() => import('./lobby/Shell.vue')),
   views: {
     Home: defineAsyncComponent(() => import('./lobby/views/Home.vue')),

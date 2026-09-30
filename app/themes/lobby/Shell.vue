@@ -43,9 +43,7 @@ const tabs = [
             </NuxtLink>
           </li>
         </ul>
-        <ThemeSwitcher v-slot="{ label }" class="lobby-slant ml-auto inline-flex rounded-sm border border-line bg-bg-elevated/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-fg-muted hover:text-fg sm:ml-4">
-          <span class="inline-flex items-center gap-1.5"><Icon name="lucide:newspaper" class="size-4" />{{ label }}</span>
-        </ThemeSwitcher>
+        <ThemeSelector trigger-class="ml-auto rounded-sm border border-line bg-bg-elevated/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-fg-muted hover:text-fg sm:ml-4" />
       </nav>
       <ul class="mx-auto flex w-full max-w-6xl items-center gap-1 overflow-x-auto px-4 pb-2 sm:hidden" aria-label="Sections">
         <li v-for="tab in tabs" :key="tab.to">

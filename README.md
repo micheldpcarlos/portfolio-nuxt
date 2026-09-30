@@ -41,7 +41,7 @@ A missing or malformed field fails the build.
 2. Create `app/themes/<id>/` with a `Shell.vue` and every view listed in `ViewProps` (`app/themes/types.ts`).
 3. Register it in `app/themes/index.ts` with async imports so it stays in its own chunk.
 
-The theme is then served under `/<id>/...`, prerendered by the crawler, excluded from the sitemap, and canonicalised to the root URL. The default theme has no prefix. `<ThemeSwitcher>` links every theme to the current page.
+The theme is then served under `/<id>/...`, prerendered by the crawler, excluded from the sitemap, and canonicalised to the root URL. The default theme has no prefix. `<ThemeSelector>` lists every theme with a link to the current page under it, and remembers the choice in localStorage. A tiny inline head script sends a visitor with a remembered non-default theme to the themed URL before first paint; URLs under a theme prefix always win.
 
 Two themes exist today:
 
