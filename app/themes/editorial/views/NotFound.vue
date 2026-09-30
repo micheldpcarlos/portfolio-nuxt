@@ -16,7 +16,7 @@ const is404 = computed(() => props.error.statusCode === 404)
     <p class="mt-3 text-fg-muted">
       {{ is404 ? 'That page does not exist, or it moved.' : (error.statusMessage || 'Please try again.') }}
     </p>
-    <NuxtLink :to="link('/')" class="mt-8 inline-block rounded-md bg-brand px-4 py-2 text-sm font-medium text-white hover:bg-brand-strong" @click="clearError()">
+    <NuxtLink :to="link('/')" class="mt-8 inline-block rounded-md bg-brand px-4 py-2 text-sm font-medium text-brand-contrast hover:bg-brand-strong" @click="clearError()">
       Back home
     </NuxtLink>
   </div>

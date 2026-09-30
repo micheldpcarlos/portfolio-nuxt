@@ -15,7 +15,7 @@ const { link } = useTheme()
         <h1 class="mt-2 text-4xl font-semibold tracking-tight sm:text-5xl">{{ home.hero.name }}</h1>
         <p class="mt-4 text-lg text-fg-muted">{{ home.hero.tagline }}</p>
         <div class="mt-6 flex gap-3">
-          <NuxtLink :to="link('/about')" class="rounded-md bg-brand px-4 py-2 text-sm font-medium text-white hover:bg-brand-strong">
+          <NuxtLink :to="link('/about')" class="rounded-md bg-brand px-4 py-2 text-sm font-medium text-brand-contrast hover:bg-brand-strong">
             About me
           </NuxtLink>
           <NuxtLink :to="link('/projects')" class="rounded-md border border-line px-4 py-2 text-sm font-medium hover:border-brand hover:text-brand">
