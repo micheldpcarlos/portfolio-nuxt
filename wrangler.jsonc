@@ -9,6 +9,12 @@
     "not_found_handling": "404-page",
     "html_handling": "drop-trailing-slash"
   },
+  // Custom domains: Cloudflare creates the DNS records and certificates on deploy.
+  // The zone must already be on this account (it is: micheldpcarlos.com).
+  "routes": [
+    { "pattern": "micheldpcarlos.com", "custom_domain": true },
+    { "pattern": "www.micheldpcarlos.com", "custom_domain": true }
+  ],
   "preview_urls": true,
   "workers_dev": true
 }
